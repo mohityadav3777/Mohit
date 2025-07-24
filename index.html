@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohit Yadav | AI/ML Enthusiast</title>
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* CSS Variables for color palette */
         :root {
             --primary-blue: #1a73e8;
             --dark-blue: #0d47a1;
@@ -16,6 +18,7 @@
             --gray: #757575;
         }
 
+        /* General Reset and Font styles */
         * {
             margin: 0;
             padding: 0;
@@ -29,6 +32,7 @@
             line-height: 1.6;
         }
 
+        /* Header and Navigation */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -81,12 +85,23 @@
             color: var(--primary-blue);
         }
 
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--black);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
-            padding-top: 80px;
+            padding-top: 80px; /* To offset fixed header */
         }
 
         .hero-content {
@@ -169,6 +184,7 @@
             object-fit: cover;
         }
 
+        /* Generic Section Styling */
         section {
             padding: 100px 0;
         }
@@ -190,6 +206,7 @@
             margin: 0 auto;
         }
 
+        /* About & Skills Section */
         .about-content {
             display: flex;
             align-items: center;
@@ -200,13 +217,11 @@
             flex: 1;
             padding-right: 50px;
         }
-
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--black);
         }
-
         .about-text p {
             margin-bottom: 20px;
             color: var(--gray);
@@ -215,57 +230,80 @@
         .skills {
             flex: 1;
         }
-
         .skill-item {
             margin-bottom: 25px;
         }
-
         .skill-name {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
         }
-
         .skill-bar {
             height: 10px;
             background-color: #e0e0e0;
             border-radius: 5px;
             overflow: hidden;
         }
-
         .skill-progress {
             height: 100%;
             background-color: var(--primary-blue);
             border-radius: 5px;
+            transition: width 1.5s ease-in-out;
         }
 
-        .education-item {
+        /* Work & Education Section */
+        .work-item, .education-item {
             background-color: var(--white);
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-
-        .education-item h3 {
+        .work-item h3, .education-item h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--black);
         }
-
-        .education-item .date {
+        .work-item .date, .education-item .date {
             color: var(--primary-blue);
             margin-bottom: 10px;
             display: block;
             font-weight: 500;
         }
+        .work-item ul {
+            list-style-position: inside;
+        }
 
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .cert-card {
+            background: var(--white);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
         .social-links {
             display: flex;
             justify-content: center;
             margin-top: 30px;
         }
-
         .social-link {
             width: 50px;
             height: 50px;
@@ -277,16 +315,17 @@
             margin: 0 10px;
             color: var(--primary-blue);
             font-size: 1.2rem;
+            text-decoration: none;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-
         .social-link:hover {
             background-color: var(--primary-blue);
             color: var(--white);
             transform: translateY(-5px);
         }
 
+        /* Footer */
         footer {
             background-color: var(--black);
             color: var(--white);
@@ -294,39 +333,48 @@
             text-align: center;
         }
 
-        footer p {
-            margin-bottom: 0;
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content, .about-content {
-                flex-direction: column;
-            }
-
-            .hero-text, .about-text {
-                padding-right: 0;
-                margin-bottom: 50px;
-                text-align: center;
-            }
-
             .nav-links {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block; /* Show hamburger icon on mobile */
             }
 
             .hero {
                 height: auto;
                 padding: 150px 0 80px;
             }
-
+            .hero-content, .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text, .about-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
             .hero-text h1 {
                 font-size: 2.2rem;
             }
-
             .section-title h2 {
                 font-size: 2rem;
             }
-
             .profile-frame {
                 width: 250px;
                 height: 250px;
@@ -339,15 +387,18 @@
         <div class="container">
             <nav>
                 <div class="logo">Mohit<span>Yadav</span></div>
-                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="project1.html">Projects</a></li>
-                    <!-- <li><a href="work.html">Work</a></li> -->
-                    <!-- <li><a href="education.html">Education</a></li> -->
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="certifiacte1.html">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -365,7 +416,8 @@
                 </div>
                 <div class="hero-image">
                     <div class="profile-frame">
-                        <img src="WhatsApp Image 2025-07-17 at 11.25.40 PM.jpeg" alt="Professional portrait of Mohit Yadav, an 18-year-old Indian student with short black hair, wearing smart casual attire against a neutral background" class="profile-img">
+                        <!-- IMPORTANT: Replace this src with the path to your actual photo file -->
+                        <img src="WhatsApp Image 2025-07-17 at 11.25.40 PM.jpeg" alt="Professional portrait of Mohit Yadav" class="profile-img">
                     </div>
                 </div>
             </div>
@@ -383,89 +435,32 @@
                     <h3>Who am I?</h3>
                     <p>I'm Mohit Yadav, an 18-year-old tech enthusiast from Jonawas near Rewari (Hansaka). Currently pursuing my BTech degree from SAITM Gurugram, I'm deeply passionate about Artificial Intelligence, Machine Learning, and software development.</p>
                     <p>I've mastered HTML, CSS, and JavaScript, and I'm continuously expanding my knowledge in web development. Currently, I'm enrolled in an excellent web design course at Zillionsoftech Pvt Ltd in Rewari, where the instructors provide top-notch guidance.</p>
-                    <p>My journey in technology is driven by curiosity and the desire to create impactful solutions. Whether it's building websites or exploring AI algorithms, I'm always eager to learn and grow in this ever-evolving field.</p>
                 </div>
                 <div class="skills">
                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>HTML</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
+                        <div class="skill-name"><span>HTML</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>CSS</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
+                        <div class="skill-name"><span>CSS</span><span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>JavaScript</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%;"></div>
-                        </div>
+                        <div class="skill-name"><span>JavaScript</span><span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%;"></div>
-                        </div>
+                        <div class="skill-name"><span>Python</span><span>70%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-name">
-                            <span>AI/ML Concepts</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 65%;"></div>
-                        </div>
+                        <div class="skill-name"><span>AI/ML Concepts</span><span>65%</span></div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 65%;"></div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Projects</h2>
-                <p>Showcase of my recent work and contributions</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6709c827-95c7-46dd-8156-3df9178d4875.png" alt="Machine learning project predicting stock prices">
-                    </div>
-                    <div class="project-content">
-                        <h3>Stock Market Predictor</h3>
-                        <p>An AI/ML project that predicts stock prices using historical data and sentiment analysis.</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d0f3e08d-c962-4dc7-a541-d42e3e122289.png" alt="E-commerce web application interface">
-                    </div>
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Full-stack e-commerce website built with MERN stack (MongoDB, Express, React, Node).</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section id="work" class="work">
         <div class="container">
@@ -515,16 +510,12 @@
             </div>
             <div class="certifications-grid">
                 <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
                     <h3>Web Design Certification</h3>
                     <p>Zillionsoftech Pvt Ltd (2023)</p>
                 </div>
                 <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
                     <h3>Python for Data Science</h3>
                     <p>Coursera (2023)</p>
                 </div>
@@ -536,76 +527,81 @@
         <div class="container">
             <div class="section-title">
                 <h2>Get In Touch</h2>
-                <p>Connect with me through social media or drop me a message</p>
+                <p>Connect with me through social media</p>
             </div>
             <div class="social-links">
-                <a href="#" class="social-link" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" class="social-link" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2023 Mohit Yadav. All Rights Reserved.</p>
+            <p>© 2024 Mohit Yadav. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
 
-        // Add fixed header shadow on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             } else {
-                header.style.boxShadow = 'none';
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
 
-        // Animation for skill bars
-        document.addEventListener('DOMContentLoaded', function() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            
-            const animateSkillBars = () => {
-                skillBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                });
-            };
-            
-            // Intersection Observer to trigger animation when section is in view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateSkillBars();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            const aboutSection = document.querySelector('#about');
-            observer.observe(aboutSection);
+        // --- Close Mobile Menu When a Link Is Clicked ---
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
+
+        // --- Smooth Scrolling for Anchor Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Check if the link is not just a placeholder
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // --- Animate Skill Bars on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('style').split(':')[1].trim();
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const aboutSection = document.querySelector('#about');
+        if(aboutSection) {
+            observer.observe(aboutSection);
+        }
     </script>
 </body>
 </html>
